@@ -71,7 +71,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <h6>Status Mode</h6>
+                    {{-- <h6>Status Mode</h6>
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="navbar_status">Navbar Status</label>
@@ -85,7 +85,7 @@
                             <button type="submit" class="btn btn-primary">Save Category</button>
                         </div>
                     </div>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>
