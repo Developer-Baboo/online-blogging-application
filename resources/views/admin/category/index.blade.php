@@ -20,18 +20,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($category as $item )
-                        <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->name}}</td>
-                            <td>
-                                <img src="{{ asset('uploads/category/'.$item->image) }}" height="50px" width="50px" alt="">
-                            </td>
-                            <td>{{ $item->status == '1' ? 'Shown':'Hidden'}}</td>
-                            <td>
-                                <a href="" class="btn btn-success btn-sm">Edit</a>
-                            </td>
-                        </tr>
+                        @foreach ($category as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>
+                                    <img src="{{ asset('uploads/category/' . $item->image) }}" height="50px" width="50px"
+                                        alt="">
+                                </td>
+                                <td>{{ $item->status == '1' ? 'Shown' : 'Hidden' }}</td>
+                                <td>
+                                    <a href="{{ url('admin/edit/' . $item->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="{{ url('admin/delete/'. $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

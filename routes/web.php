@@ -19,7 +19,10 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('add-category', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('add-category');
 
     Route::post('store', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store');
-    // Route::post('store', function () {
-    //     dd("working");
-    // })->name('store');
+
+    Route::get('edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('edit');
+
+    Route::patch('update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
+
+    Route::delete('delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('delete');
 });
