@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+//use Illuminate\Http\FormRequest;
+
 
 class CategoryFormRequest extends FormRequest
 {
@@ -67,7 +69,7 @@ class CategoryFormRequest extends FormRequest
             ],
         ];
     }
-    
+
     public function messages(): array
     {
         return [

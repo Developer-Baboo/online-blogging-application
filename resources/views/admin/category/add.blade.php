@@ -27,31 +27,49 @@
                         <label for="slug">Slug</label>
                         <input type="text" name="slug" class="form-control" required>
                     </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <div class="mb-3">
                         <label for="description">Description</label>
                         <textarea name="description" class="form-control" required></textarea>
                     </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <div class="mb-3">
                         <label for="image">Image</label>
                         <input type="file" name="image" class="form-control" accept="image/*" required>
                     </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <div class="mb-3">
                         <label for="meta_title">Meta Title</label>
                         <input type="text" name="meta_title" class="form-control" required>
                     </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <div class="mb-3">
                         <label for="meta_description">Meta Description</label>
                         <textarea name="meta_description" rows="3" class="form-control" required></textarea>
                     </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <div class="mb-3">
                         <label for="meta_keyword">Meta Keyword</label>
                         <textarea name="meta_keyword" rows="3" class="form-control" required></textarea>
                     </div>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <h6>Status Mode</h6>
                     <div class="row">

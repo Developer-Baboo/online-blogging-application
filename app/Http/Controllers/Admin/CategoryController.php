@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Http\Requests\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $category = Category::all();
+        return view('admin.category.index', compact('category'));
     }
 
     /**
@@ -33,38 +35,54 @@ class CategoryController extends Controller
     // {
     //     dd($request);
     // }
-    public function store(CategoryFormRequest $request)
+    // use Illuminate\Http\Request;
+
+    public function store(Request $request)
     {
-        $validatedData = $request->validated();
-        dd("Validation passed", $validatedData);
+        try {
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'slug' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+                'meta_title' => 'nullable|string|max:255',
+                'meta_description' => 'nullable|string',
+                'meta_keyword' => 'nullable|string',
+                'navbar_status' => 'required|boolean',
+                'status' => 'required|boolean',
+            ]);
 
-        dd("hlkejr");
-        $data = $request->validated();
+            // Process the validated data and save to the database
+            // Example:
+            $category = new Category;
+            $category->name = $validatedData['name'];
+            $category->slug = $validatedData['slug'];
+            $category->description = $validatedData['description'];
 
-        $category = new Category;
-        $category->name = $data['name'];
-        $category->slug = $data['slug'];
-        $category->description = $data['description'];
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move('uploads/category/', $filename);
+                $category->image = $filename;
+            }
 
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('uploads/category/', $filename);
-            $category->image = $filename;
+            $category->meta_title = $validatedData['meta_title'];
+            $category->meta_description = $validatedData['meta_description'];
+            $category->meta_keyword = $validatedData['meta_keyword'];
+
+            $category->navbar_status = $validatedData['navbar_status'];
+            $category->status = $validatedData['status'];
+            $category->created_by = Auth::user()->id;
+
+            $category->save();
+
+            return redirect()->route('category')->with('status', 'Category added successfully');
+        } catch (\Exception $ex) {
+            // dd($ex);
+            return redirect()->route('category')->with('status', 'Something went wrong');
         }
-
-        $category->meta_title = $data['meta_title'];
-        $category->meta_description = $data['meta_description'];
-        $category->meta_keyword = $data['meta_keyword'];
-
-        $category->navbar_status = $data['navbar_status'];
-        $category->status = $data['status'];
-        $category->created_by = Auth::user()->id;
-
-        $category->save();
-
-        return redirect()->route('admin/category')->with('success', 'Category added successfully');
     }
+
 
 
     /**
