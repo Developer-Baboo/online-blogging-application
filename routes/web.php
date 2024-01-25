@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PostController;
 
 
 Route::get('/', function () {
@@ -25,4 +26,20 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::patch('update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
 
     Route::delete('delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('delete');
+
+
+
+    // Post Controller Routes
+
+    Route::get('view-post', [PostController::class, 'index'])->name('view-post');
+
+    Route::get('add-post', [PostController::class, 'create'])->name('add-post');
+
+    Route::post('store-post', [PostController::class, 'store'])->name('store-post');
+
+    Route::get('edit-post/{id}', [PostController::class, 'edit'])->name('edit-post');
+
+    Route::patch('update-post/{id}', [PostController::class, 'update'])->name('update-post');
+
+    Route::delete('delete-post/{id}', [PostController::class, 'destroy'])->name('delete-post');
 });
