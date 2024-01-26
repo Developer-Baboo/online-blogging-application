@@ -25,6 +25,23 @@
 
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+
+    {{-- Data Table --}}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+
+    {{-- pagaination button and number of rows --}}
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button{
+            padding:0px !important;
+            margin:0px !important;
+        }
+        div.dataTables_wrapper div.dataTables_length select {
+            width:40% !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -67,14 +84,20 @@
     {{-- Summernote js link --}}
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $("#mySummernote").summernote({
-            height:150,
+        $(document).ready(function() {
+            $("#mySummernote").summernote({
+                height: 150,
+            });
+            $('.dropdown-toggle').dropdown();
         });
-        $('.dropdown-toggle').dropdown();
-    });
-</script>
+    </script>
 
+    {{-- Data Table --}}
+    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        let table = new DataTable('#myDataTable');
+    </script>
 </body>
 
 </html>
