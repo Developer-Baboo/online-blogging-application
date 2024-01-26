@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\UserController;
 
 
 Route::get('/', function () {
@@ -42,4 +43,13 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::patch('update-post/{id}', [PostController::class, 'update'])->name('update-post');
 
     Route::delete('delete-post/{id}', [PostController::class, 'destroy'])->name('delete-post');
+
+
+    //Get Registered Users
+
+    Route::get('users', [UserController::class, 'index']);
+
+    Route::get('edit-user/{id}', [UserController::class, 'edit'])->name('edit-user');
+
+    Route::PUT('update-user/{id}', [UserController::class, 'update'])->name('update-user');
 });

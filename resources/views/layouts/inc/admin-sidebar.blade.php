@@ -2,7 +2,7 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ url('admin/dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
@@ -37,6 +37,10 @@
                             Post</a>
                     </nav>
                 </div>
+                <a class="nav-link" href="{{ url('admin/users') }}">
+                    <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
+                    Users
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
