@@ -16,9 +16,9 @@
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('category') }}"><i class="fas fa-folder-open"></i>  View
+                        <a class="nav-link" href="{{ route('category') }}"><i class="fas fa-folder-open"></i> View
                             Category</a>
-                        <a class="nav-link" href="{{ route('add-category') }}"><i class="fas fa-plus-circle"></i>  Add
+                        <a class="nav-link" href="{{ route('add-category') }}"><i class="fas fa-plus-circle"></i> Add
                             Category</a>
                     </nav>
                 </div>
@@ -31,13 +31,17 @@
                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                     data-bs-parent="#sidenavAccordionPages">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('view-post') }}"><i class="fas fa-file-alt mr-2"></i>  View
+                        <a class="nav-link" href="{{ route('view-post') }}"><i class="fas fa-file-alt mr-2"></i> View
                             Post</a>
-                        <a class="nav-link" href="{{ route('add-post') }}"><i class="fas fa-plus-square"></i>  Add
+                        <a class="nav-link" href="{{ route('add-post') }}"><i class="fas fa-plus-square"></i> Add
                             Post</a>
                     </nav>
                 </div>
             </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            Start Bootstrap
         </div>
     </nav>
 </div>

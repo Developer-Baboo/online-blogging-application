@@ -7,7 +7,9 @@
     <div class="container-fluid px-4">
         <div class="card mt-4">
             <div class="card-header">
-                <h4 class="">Edit Post</h4>
+                <h4>Edit Post
+                    <a href="{{ url('admin/view-post') }}" class="btn btn-danger btn-sm float-end">Back</a>
+                </h4>
             </div>
             <div class="card-body">
                 <form action="{{ url('admin/update-post/'. $post->id) }}" method="POST" enctype="multipart/form-data">
@@ -45,7 +47,7 @@
 
                     <div class="mb-3">
                         <label for="description">Description</label>
-                        <textarea name="description" class="form-control" required>{{ $post->description }}</textarea>
+                        <textarea name="description" id="mySummernote"  class="form-control" required>{{ $post->description }}</textarea>
                     </div>
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
