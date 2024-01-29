@@ -11,15 +11,18 @@
                     @forelse ($post as $postitem)
                         <div class="card card-shadow mt-4">
                             <div class="card-body">
-                                <a href="{{ url('tutorial/'.$category->slug.'/'.$postitem->slug) }}" class="text-decoration-none" >
+                                <a href="{{ url('tutorial/' . $category->slug . '/' . $postitem->slug) }}"
+                                    class="text-decoration-none">
                                     <h2 class="post-heading">{{ $postitem->name }}</h2>
                                 </a>
                                 <h6> Posted On : {{ $postitem->created_at->format('d-m-Y') }}
-                                    <span class="ms-3" > Posted By : {{ $postitem->user->name }} </span>
+                                    <span class="ms-3"> Posted By : {{ $postitem->user->name }} </span>
                                 </h6>
 
                             </div>
                         </div>
+                        <!-- Pagination Links -->
+
                     @empty
                         <div class="card card-shadow mt-4">
                             <div class="card-body">
@@ -27,6 +30,9 @@
                             </div>
                         </div>
                     @endforelse
+                    <div class="mt-4" >
+                        {{ $post->links() }}
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="border p-2">
