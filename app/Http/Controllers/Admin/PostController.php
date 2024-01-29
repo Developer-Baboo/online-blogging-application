@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $category = Category::where('status', '1')->get();
+        $category = Category::where('status', '0')->get();
         return view('admin.post.add', compact('category'));
     }
 
@@ -118,7 +118,7 @@ class PostController extends Controller
             $post = Post::find($id);
             $post->name = $validatedData['name'];
             $post->slug = $slug;
-            dd($post->slug);
+            // dd($post->slug);
             $post->description = $validatedData['description'];
 
 

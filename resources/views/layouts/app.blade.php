@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/style_frontend_footer.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -25,6 +26,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        @include('layouts.inc.frontend-footer')
     </div>
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
 <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}" defer></script>
