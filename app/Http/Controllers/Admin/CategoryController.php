@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use App\Http\Requests\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -56,9 +57,10 @@ class CategoryController extends Controller
 
             // Process the validated data and save to the database
             // Example:
+            $slug = Str::slug($validatedData['slug']);
             $category = new Category;
             $category->name = $validatedData['name'];
-            $category->slug = $validatedData['slug'];
+            $category->slug = $slug;
             $category->description = $validatedData['description'];
 
             if ($request->hasFile('image')) {

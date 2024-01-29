@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Post;
 // use App\Models\post;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+
 
 class PostController extends Controller
 {
@@ -41,21 +43,21 @@ class PostController extends Controller
                 'name' => 'required|string|max:255',
                 'yt_iframe' => 'required|string|max:255',
                 'category_id' => 'required|string|max:255',
-                'slug' => 'required|string|max:255',
                 'description' => 'nullable|string',
+                'slug' => 'string',
                 'meta_title' => 'nullable|string|max:255',
                 'meta_description' => 'nullable|string',
                 'meta_keyword' => 'nullable|string',
                 'status' => 'required|boolean',
             ]);
 
-            // Process the validated data and save to the database
-            // Example:
+            // Generate slug from the name field
+            $slug = Str::slug($validatedData['slug']);
             $post = new Post;
             $post->name = $validatedData['name'];
             $post->yt_iframe = $validatedData['yt_iframe'];
             $post->category_id = $validatedData['category_id'];
-            $post->slug = $validatedData['slug'];
+            $post->slug = $slug;
             $post->description = $validatedData['description'];
             $post->meta_title = $validatedData['meta_title'];
             $post->meta_description = $validatedData['meta_description'];
