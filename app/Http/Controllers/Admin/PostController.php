@@ -44,7 +44,7 @@ class PostController extends Controller
                 'yt_iframe' => 'required|string|max:255',
                 'category_id' => 'required|string|max:255',
                 'description' => 'nullable|string',
-                'slug' => 'string',
+                'slug' => 'required|string|max:25',
                 'meta_title' => 'nullable|string|max:255',
                 'meta_description' => 'nullable|string',
                 'meta_keyword' => 'nullable|string',
@@ -53,6 +53,7 @@ class PostController extends Controller
 
             // Generate slug from the name field
             $slug = Str::slug($validatedData['slug']);
+
             $post = new Post;
             $post->name = $validatedData['name'];
             $post->yt_iframe = $validatedData['yt_iframe'];
@@ -97,7 +98,7 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // dd($id);
+        // dd($request);
         // dd("kljsdflk");
         try {
             $validatedData = $request->validate([
@@ -110,11 +111,14 @@ class PostController extends Controller
                 'status' => 'required|boolean',
             ]);
 
-            // Process the validated data and save to the database
-            // Example:
+            // dd($validatedData);
+
+            $slug = Str::slug($validatedData['slug']);
+            // dd($slug);
             $post = Post::find($id);
             $post->name = $validatedData['name'];
-            $post->slug = $validatedData['slug'];
+            $post->slug = $slug;
+            dd($post->slug);
             $post->description = $validatedData['description'];
 
 

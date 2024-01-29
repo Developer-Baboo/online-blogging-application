@@ -4,11 +4,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Frontend\FrontendController;
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [FrontendController::class, 'index']);
+Route::get('tutorial/{category_slug}', [FrontendController::class, 'viewCategoryPost']);
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
