@@ -1,4 +1,11 @@
-@extends('layouts.app');
+@extends('layouts.app')
+
+@section('title', "$category->meta_title")
+
+@section('meta_description', "$category->meta_description")
+
+@section('meta_keyword', "$category->meta_keyword")
+
 @section('content')
     <div class="py-4">
         <div class="container">
