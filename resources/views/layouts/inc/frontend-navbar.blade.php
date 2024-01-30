@@ -1,7 +1,7 @@
 {{-- frontend-navbar --}}
 {{--  --}}
 
-<div class="global-navbar">
+<div class="global-navbar mb-10 ">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
