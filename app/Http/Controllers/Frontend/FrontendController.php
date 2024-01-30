@@ -10,7 +10,8 @@ use App\Http\Controllers\Controller;
 class FrontendController extends Controller
 {
     public function index(){
-        return view('frontend.index');
+        $all_categories = Category::where('status', '0')->get();
+        return view('frontend.index', compact('all_categories'));
     }
 
     public function viewCategoryPost(string $category_slug){
