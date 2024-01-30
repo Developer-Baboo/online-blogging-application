@@ -30,7 +30,8 @@ class FrontendController extends Controller
         $category = Category::where('slug', $category_slug)->where('status', '0')->first();
         if ($category) {
             $post = Post::where('category_id', $category->id)->where('slug', $post_slug)->where('status', '0')->first();
-            return view('frontend.post.view', compact('post'));
+            $latest_posts = Post::where('category_id', $category->id)->where('status', '0')->orderBy('created_at', 'DESC')->get()->take(3);
+            return view('frontend.post.view', compact('post', 'latest_posts'));
         } else {
             return redirect('/');
         }
