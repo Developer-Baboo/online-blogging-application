@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('tutorial/{category_slug}', [FrontendController::class, 'viewCategoryPost']);
+Route::get('tutorial/{category_slug}/{post_slug}', [FrontendController::class, 'viewPost']);
 
 
 
