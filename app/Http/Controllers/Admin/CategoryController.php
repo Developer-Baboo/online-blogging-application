@@ -178,8 +178,9 @@ class CategoryController extends Controller
             if (File::exists($destination)) {
                 File::delete($destination);
             }
+            $category->posts()->delete();
             $category->delete();
-            return redirect('admin/category')->with('status', 'Category Deleted Successfully');
+            return redirect('admin/category')->with('status', 'Category Deleted with its all posts Successfully');
         }else{
             return redirect('admin/category')->with('status', 'Category Id not found');
         }
