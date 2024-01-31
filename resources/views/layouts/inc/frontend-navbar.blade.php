@@ -15,10 +15,10 @@
         </div>
     </div>
 </div>
-<div class="sticky-top" >
+<div class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-green">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -38,6 +38,15 @@
                         <a class="nav-link" href="{{ url('tutorial/' . $cateitem->slug) }}">{{ $cateitem->name }}</a>
                     </li>
                 @endforeach
+                @if(Auth::check())
+                <li>
+                    <a class="nav-link btn-danger" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                </li>
+                @endif
+                <form action=" {{ route('logout') }} " id="logout-form" class="d-none" method="POST">
+                    @csrf
+                </form>
             </ul>
 
         </div>

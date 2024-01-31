@@ -38,6 +38,20 @@
         </main>
         @include('layouts.inc.frontend-footer')
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            @if (session('status'))
+                // console.log("Session Status:", "{{ session('status') }}");
+                Toastify({
+                    text: "{{ session('status') }}",
+                    duration: 3000,
+                    gravity: "top",
+                    backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                }).showToast();
+            @endif
+        });
+    </script>
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 

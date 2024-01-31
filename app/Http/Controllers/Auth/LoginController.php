@@ -28,12 +28,15 @@ class LoginController extends Controller
      */
     // protected $redirectTo = '/home';
 
-    public function authenticated(){
-        if(Auth::user()->role_as == '1'){ // 1 ==> for admin
+    public function authenticated()
+    {
+        if (Auth::user()->role_as == '1') { // 1 ==> for admin
             return redirect('admin/dashboard')->with('status', 'Welcome to Dashboard');
-        }elseif (Auth::user()->role_as == '0') { // 0 for user
-            return redirect('/home')->with('status', 'Logged In Successfully');
-        }else{
+        } elseif (Auth::user()->role_as == '0') { // 0 for user
+            return redirect('/')->with('status', 'Logged In Successfully');
+        } elseif (Auth::user()->role_as == '2') { // 0 for Blogger
+            return redirect('/')->with('status', 'Logged In Successfully');
+        } else {
             return redirect('/');
         }
     }
