@@ -9,41 +9,43 @@
                 </h4>
             </div>
             <div class="card-body">
-                <table id="myDataTable" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>User Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($users as $user)
+                <div class="table-responsive">
+                    <table id="myDataTable" class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-                                    @if ($user->role_as == 1)
-                                        Admin
-                                    @elseif ($user->role_as == 0)
-                                        User
-                                    @else
-                                        Blogger
-                                    @endif
-                                </td>
-                                <td>
-                                    {{--  --}}
-                                    {{-- edit-user --}}
-                                    <a href="{{ url('admin/edit-user/' . $user->id) }}"
-                                        class="btn btn-success btn-sm">Edit</a>
-                                </td>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Edit</th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        @if ($user->role_as == 1)
+                                            Admin
+                                        @elseif ($user->role_as == 0)
+                                            User
+                                        @else
+                                            Blogger
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {{--  --}}
+                                        {{-- edit-user --}}
+                                        <a href="{{ url('admin/edit-user/' . $user->id) }}"
+                                            class="btn btn-success btn-sm">Edit</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

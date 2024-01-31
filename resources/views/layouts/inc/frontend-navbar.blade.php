@@ -1,20 +1,21 @@
 {{-- frontend-navbar --}}
 {{--  --}}
 
-<div class="global-navbar mb-10 ">
+<div class="global-navbar bg-white">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="{{ asset('assets/images/logo.png') }}" style="width:50%"  alt="Logo" />
+                <img src="{{ asset('assets/images/logo.png') }}" style="width:50%" alt="Logo" />
             </div>
             <div class="col-md-9 my-auto">
                 <div class="border text-center p-2">
                     <h5>Advertise Here</h5>
                 </div>
-
             </div>
         </div>
     </div>
+</div>
+<div class="sticky-top" >
     <nav class="navbar navbar-expand-lg navbar-dark bg-green">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -27,24 +28,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li> --}}
                 @php
-                    $categories = App\Models\Category::where('navbar_status', '0')->where('status', '0')->get();
+                    $categories = App\Models\Category::where('navbar_status', '0')
+                        ->where('status', '0')
+                        ->get();
                 @endphp
                 @foreach ($categories as $cateitem)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('tutorial/'.$cateitem->slug) }}">{{ $cateitem->name}}</a>
+                        <a class="nav-link" href="{{ url('tutorial/' . $cateitem->slug) }}">{{ $cateitem->name }}</a>
                     </li>
                 @endforeach
             </ul>

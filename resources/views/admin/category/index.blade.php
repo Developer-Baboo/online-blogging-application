@@ -9,7 +9,8 @@
                 </h4>
             </div>
             <div class="card-body">
-                <table id="myDataTable" class="table table-bordered">
+                <div class="table-responsive">
+                    <table id="myDataTable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -46,6 +47,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>

@@ -38,19 +38,27 @@
         </main>
         @include('layouts.inc.frontend-footer')
     </div>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 
 
     {{-- Owl Carousel --}}
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
 
     <script>
+        console.log("lhisflk");
+    </script>
+    <script>
+        $(document).ready(function() {
+            console.log('Bootstrap JavaScript initialized.');
+        });
+    </script>
+    <script>
         $('.category-carousel').owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
-            dots:true,
+            dots: true,
             responsive: {
                 0: {
                     items: 1

@@ -19,7 +19,7 @@
                         <h6 class="" > {{ $post->category->name .'/'.$post->name}} </h6>
                     </div>
                     <div class="card card-shadow mt-4">
-                        <div class="card-body">
+                        <div class="card-body post-description ">
                             {{ $post->description }}
                         </div>
                     </div>
