@@ -38,7 +38,7 @@ class CommentController extends Controller
             ]);
 
             if ($validator->fails()) {
-                 return redirect()->back()->with('status', 'Comment Field is necessary');
+                return redirect()->back()->with('status', 'Comment Field is necessary');
             }
 
             $post = Post::where('slug', $request->post_slug)->where('status', '0')->first();
@@ -84,8 +84,52 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    // public function destroy(Request $request)
+    // {
+    //     dd("lsdjf");
+    //     if(Auth::check()){
+    //         $comment = Comment::where('id', $request->comment_id)
+    //                                         ->where('user_id', Auth::user()->id)
+    //                                         ->first();
+    //         $comment->delete();
+
+    //         return response()->json([
+    //             'status' => 200,
+    //             'message' => 'Comment deleted Successfully'
+    //         ]);
+    //     }
+    // }
+
+    public function destroy(Request $request)
     {
-        //
+        // dd("lskdjflsd");
+        // dd($request);
+        if (Auth::check()) {
+            // dd("ldsjf");
+            $comment = Comment::where('id', $request->comment_id)
+                ->where('user_id', Auth::user()->id)
+                ->first();
+            // dd($comment);
+
+            if ($comment) {
+                // dd("Working");
+                $comment->delete();
+
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Comment deleted successfully'
+                ]);
+            }else{
+                return response()->json([
+                    'status' => 500,
+                    'message' => 'Something went wrong'
+                ]);
+            }
+        }
+
+        return response()->json([
+            'status' => 401,
+            'message' => 'Login to Delete this comment'
+        ]);
     }
 }

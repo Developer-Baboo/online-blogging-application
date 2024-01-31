@@ -20,6 +20,8 @@ Route::get('tutorial/{category_slug}/{post_slug}', [FrontendController::class, '
 // Route::post('comments', [CommentController::class, 'store']);
 Route::post('comments', [CommentController::class, 'store']);
 
+Route::post('delete-comment', [CommentController::class, 'destroy']);
+
 
 
 Auth::routes();
