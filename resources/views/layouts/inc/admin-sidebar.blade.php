@@ -49,6 +49,12 @@
                     <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
                     Users
                 </a>
+
+
+                <a class="nav-link {{ Request::is('admin/settings') ? 'active' : '' }}" href="{{ url('admin/settings') }}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
+                    Settings
+                </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">

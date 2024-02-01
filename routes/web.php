@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SettingController;
 // use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\CommentController;
@@ -66,4 +67,9 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('edit-user/{id}', [UserController::class, 'edit'])->name('edit-user');
 
     Route::PUT('update-user/{id}', [UserController::class, 'update'])->name('update-user');
+
+    Route::get('settings', [SettingController::class, 'index'])->name('settings');
+
+    Route::post('admin/settings', [SettingController::class, 'store'])->name('store');
+
 });
