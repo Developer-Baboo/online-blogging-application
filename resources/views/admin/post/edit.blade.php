@@ -12,12 +12,25 @@
                 </h4>
             </div>
             <div class="card-body">
-                <form action="{{ url('admin/update-post/'. $post->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/update-post/' . $post->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
 
                     <div class="mb-3">
-                        <label for="name">Post Name</label>
+                        <label for="name">Choose Category</label> <span class="text-danger"> *</span>
+                        <select name="category_id" class="form-control">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" @if ($category->id == $post->category_id) selected @endif>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label for="name">Post Name</label><span class="text-danger"> *</span>
                         <input type="text" name="name" value="{{ $post->name }}" class="form-control">
                     </div>
                     @error('name')
@@ -27,7 +40,7 @@
 
 
                     <div class="mb-3">
-                        <label for="name">Youtbe iFrame</label>
+                        <label for="name">Youtbe iFrame</label><span class="text-danger"> *</span>
                         <input type="text" name="yt_ifrmae" value="{{ $post->yt_iframe }}" class="form-control">
                     </div>
                     @error('name')
@@ -38,7 +51,7 @@
 
 
                     <div class="mb-3">
-                        <label for="slug">Slug</label>
+                        <label for="slug">Slug</label><span class="text-danger"> *</span>
                         <input type="text" name="slug" value="{{ $post->slug }}" class="form-control" required>
                     </div>
                     @error('name')
@@ -47,7 +60,7 @@
 
                     <div class="mb-3">
                         <label for="description">Description</label>
-                        <textarea name="description" id="mySummernote"  class="form-control" required>{{ $post->description }}</textarea>
+                        <textarea name="description" id="mySummernote" class="form-control" required>{{ $post->description }}</textarea>
                     </div>
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>
@@ -55,7 +68,7 @@
 
                     <div class="mb-3">
                         <label for="slug">Yt Frame</label>
-                        <input type="text" name="slug" value="{{ $post->yt_iframe }}" class="form-control" required>
+                        <input type="text" name="yt_iframe" value="{{ $post->yt_iframe }}" class="form-control" required>
                     </div>
                     @error('name')
                         <span class="text-danger">{{ $message }}</span>

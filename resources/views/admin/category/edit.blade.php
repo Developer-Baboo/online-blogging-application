@@ -19,7 +19,7 @@
                     @method('PATCH')
 
                     <div class="mb-3">
-                        <label for="name">Category Name</label>
+                        <label for="name">Category Name</label><span class="text-danger"> *</span>
                         <input type="text" name="name" value="{{ $category->name }}" class="form-control">
                     </div>
                     @error('name')
@@ -27,7 +27,7 @@
                     @enderror
 
                     <div class="mb-3">
-                        <label for="slug">Slug</label>
+                        <label for="slug">Slug</label> <span class="text-danger"> *</span>
                         <input type="text" name="slug" value="{{ $category->slug }}" class="form-control" required>
                     </div>
                     @error('name')

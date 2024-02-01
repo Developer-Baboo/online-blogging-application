@@ -18,7 +18,7 @@
                     @csrf
 
                     <div class="mb-3">
-                        <label for="name">Category</label>
+                        <label for="name">Category</label><span class="text-danger"> *</span>
                         <select name="category_id" id="" class="form-control">
                             @foreach ($category as $cateitem)
                                 <option value="{{ $cateitem->id }}">{{ $cateitem->name }}</option>
@@ -27,17 +27,17 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="name">Post Name</label>
+                        <label for="name">Post Name</label> <span class="text-danger"> *</span>
                         <input type="text" name="name" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label for="name">Youtube iFrame</label>
+                        <label for="name">Youtube iFrame</label><span class="text-danger"> *</span>
                         <input type="text" name="yt_iframe" class="form-control">
                     </div>
 
                     <div class="mb-3">
-                        <label for="slug">Slug</label>
+                        <label for="slug">Slug</label><span class="text-danger"> *</span>
                         <input type="text" name="slug" class="form-control" required>
                     </div>
 

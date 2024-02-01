@@ -89,9 +89,10 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
-        // dd($post);
-        return view('admin.post.edit', compact('post'));
+        $categories = Category::all(); // Fetch all categories
+        return view('admin.post.edit', compact('post', 'categories'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -103,8 +104,10 @@ class PostController extends Controller
         try {
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'slug' => 'required|string|max:255',
+                'yt_iframe' => 'required|string|max:255',
+                'category_id' => 'required|string|max:255',
                 'description' => 'nullable|string',
+                'slug' => 'required|string|max:25',
                 'meta_title' => 'nullable|string|max:255',
                 'meta_description' => 'nullable|string',
                 'meta_keyword' => 'nullable|string',
@@ -117,6 +120,8 @@ class PostController extends Controller
             // dd($slug);
             $post = Post::find($id);
             $post->name = $validatedData['name'];
+            $post->yt_iframe = $validatedData['yt_iframe'];
+            $post->category_id = $validatedData['category_id'];
             $post->slug = $slug;
             // dd($post->slug);
             $post->description = $validatedData['description'];
