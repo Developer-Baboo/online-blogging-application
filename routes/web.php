@@ -32,10 +32,12 @@ Auth::routes();
 
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category');
+
     Route::get('add-category', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('add-category');
 
-    Route::post('store', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('store');
+    Route::post('store-category', [App\Http\Controllers\Admin\CategoryController::class, 'store_category'])->name('store-category');
 
     Route::get('edit/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('edit');
 

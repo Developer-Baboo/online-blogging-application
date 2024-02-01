@@ -48,7 +48,7 @@ class PostController extends Controller
                 'meta_title' => 'nullable|string|max:255',
                 'meta_description' => 'nullable|string',
                 'meta_keyword' => 'nullable|string',
-                'status' => 'required|boolean',
+                'status' => 'nullable',
             ]);
 
             // Generate slug from the name field
@@ -63,7 +63,7 @@ class PostController extends Controller
             $post->meta_title = $validatedData['meta_title'];
             $post->meta_description = $validatedData['meta_description'];
             $post->meta_keyword = $validatedData['meta_keyword'];
-            $post->status = $validatedData['status'];
+            $post->status = $validatedData['status'] ?? 0;
             $post->created_by = Auth::user()->id;
 
             $post->save();
@@ -108,7 +108,7 @@ class PostController extends Controller
                 'meta_title' => 'nullable|string|max:255',
                 'meta_description' => 'nullable|string',
                 'meta_keyword' => 'nullable|string',
-                'status' => 'required|boolean',
+                'status' => 'nullable',
             ]);
 
             // dd($validatedData);
@@ -125,7 +125,8 @@ class PostController extends Controller
             $post->meta_title = $validatedData['meta_title'];
             $post->meta_description = $validatedData['meta_description'];
             $post->meta_keyword = $validatedData['meta_keyword'];
-            $post->status = $validatedData['status'];
+            // $post->status =
+            $post->status = $validatedData['status'] ?? 0;
             $post->created_by = Auth::user()->id;
 
             $post->save();

@@ -4,8 +4,11 @@
 <div class="global-navbar bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <img src="{{ asset('assets/images/logo.png') }}" style="width:50%" alt="Logo" />
+            <div class="col-md-3 d-none d-sm-none d-md-inline">
+                @php
+                    $setting = App\Models\Setting::find(1);
+                @endphp
+                <img src="{{ asset('uploads/settings/'.$setting->logo) }}" style="width:50%" alt="Logo" />
             </div>
             <div class="col-md-9 my-auto">
                 <div class="border text-center p-2">

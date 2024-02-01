@@ -40,8 +40,9 @@ class CategoryController extends Controller
     // }
     // use Illuminate\Http\Request;
 
-    public function store(Request $request)
+    public function store_category (Request $request)
     {
+        // dd($request);
         try {
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
@@ -51,9 +52,11 @@ class CategoryController extends Controller
                 'meta_title' => 'nullable|string|max:255',
                 'meta_description' => 'nullable|string',
                 'meta_keyword' => 'nullable|string',
-                'navbar_status' => 'required|boolean',
-                'status' => 'required|boolean',
+                'navbar_status' => 'nullable|boolean',
+                'status' => 'nullable',
             ]);
+
+
 
             // Process the validated data and save to the database
             // Example:
@@ -74,8 +77,8 @@ class CategoryController extends Controller
             $category->meta_description = $validatedData['meta_description'];
             $category->meta_keyword = $validatedData['meta_keyword'];
 
-            $category->navbar_status = $validatedData['navbar_status'];
-            $category->status = $validatedData['status'];
+            $category->navbar_status = $validatedData['navbar_status'] ?? 0;
+            $category->status = $validatedData['status'] ?? 0;
             $category->created_by = Auth::user()->id;
 
             $category->save();
@@ -123,8 +126,8 @@ class CategoryController extends Controller
                 'meta_title' => 'nullable|string|max:255',
                 'meta_description' => 'nullable|string',
                 'meta_keyword' => 'nullable|string',
-                'navbar_status' => 'required|boolean',
-                'status' => 'required|boolean',
+                'navbar_status' => 'nullable|boolean',
+                'status' => 'nullable',
             ]);
 
             // Process the validated data and save to the database
@@ -151,8 +154,8 @@ class CategoryController extends Controller
             $category->meta_description = $validatedData['meta_description'];
             $category->meta_keyword = $validatedData['meta_keyword'];
 
-            $category->navbar_status = $validatedData['navbar_status'];
-            $category->status = $validatedData['status'];
+            $category->navbar_status = $validatedData['navbar_status'] ?? 0;
+            $category->status = $validatedData['status'] ?? 0;
             $category->created_by = Auth::user()->id;
 
             $category->save();

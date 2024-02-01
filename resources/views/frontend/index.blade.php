@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Online Blogging Application')
+@section('title', "$setting->meta_title")
 
-@section('meta_description', 'Online Blogging Application')
+@section('meta_description', "$setting->meta_description")
 
-@section('meta_keyword', 'Online Blogging Application')
+@section('meta_keyword', "$setting->meta_keyword")
 
 @section('content')
     <div class="py-5">
@@ -16,7 +16,7 @@
                             <div class="item">
                                 <a href=" {{ url('tutorial/' . $all_cate_item->slug) }} " class="text-decoration-none">
                                     <div class="card">
-                                        <img src="{{ asset('uploads/category/' . $all_cate_item->image) }}" alt="Image">
+                                        <img src="{{ asset('uploads/category/' . $all_cate_item->image) }}" alt="Image" height="150px" width="70px" >
                                         <div class="card-body text-center">
                                             <h5 class="text-dark">{{ $all_cate_item->name }}</h5>
                                         </div>

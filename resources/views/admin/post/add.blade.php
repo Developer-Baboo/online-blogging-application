@@ -14,13 +14,13 @@
             <div class="card-body">
                 <!-- resources/views/categories/create.blade.php -->
 
-                <form action="{{ url('admin/store-post/')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/store-post/') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
-                     <div class="mb-3">
+                    <div class="mb-3">
                         <label for="name">Category</label>
                         <select name="category_id" id="" class="form-control">
-                            @foreach ($category as $cateitem )
+                            @foreach ($category as $cateitem)
                                 <option value="{{ $cateitem->id }}">{{ $cateitem->name }}</option>
                             @endforeach
                         </select>
@@ -38,7 +38,7 @@
 
                     <div class="mb-3">
                         <label for="slug">Slug</label>
-                        <input type="text" name="slug"  class="form-control" required>
+                        <input type="text" name="slug" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
@@ -48,8 +48,7 @@
 
                     <div class="mb-3">
                         <label for="meta_title">Meta Title</label>
-                        <input type="text" name="meta_title" class="form-control"
-                            required>
+                        <input type="text" name="meta_title" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
@@ -63,8 +62,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="status">Status</label>
-                        <input type="checkbox" name="status" value="1"
-                            value="1">
+                        <input type="checkbox" name="status" value="1">
                     </div>
 
 

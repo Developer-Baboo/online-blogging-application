@@ -9,6 +9,12 @@
 
     <title>@yield('title')</title>
 
+    @php
+        $setting = App\Models\Setting::find(1);
+    @endphp
+    @if ($setting)
+        <link rel="shortcut icon" href=" {{ asset('uploads/settings/' . $setting->favicon) }}" type="image/x-icon">
+    @endif
     {{-- Fonts --}}
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
@@ -34,12 +40,13 @@
 
     {{-- pagaination button and number of rows --}}
     <style>
-        .dataTables_wrapper .dataTables_paginate .paginate_button{
-            padding:0px !important;
-            margin:0px !important;
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0px !important;
+            margin: 0px !important;
         }
+
         div.dataTables_wrapper div.dataTables_length select {
-            width:40% !important;
+            width: 40% !important;
         }
     </style>
 </head>

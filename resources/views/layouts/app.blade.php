@@ -13,6 +13,13 @@
     <meta name="keywords" content="@yield('meta_keyword')">
     <meta name="author" content="Developer Baboo Kumar">
 
+    @php
+        $setting = App\Models\Setting::find(1);
+    @endphp
+    @if($setting)
+    <link rel="shortcut icon" href=" {{ asset('uploads/settings/'.$setting->favicon) }}" type="image/x-icon" >
+    @endif
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">

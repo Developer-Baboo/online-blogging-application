@@ -14,7 +14,7 @@
             <div class="card-body">
                 <!-- resources/views/categories/create.blade.php -->
 
-                <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('store-category') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
